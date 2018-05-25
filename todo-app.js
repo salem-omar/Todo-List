@@ -34,8 +34,9 @@ filteredTodos = function (todos, filters) {
 let filteredData = filteredTodos(todos, filters);
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
-    console.log(e.target.value);
+     console.log(e.target.value);
     filters.searchText = e.target.value;
+    
 });
 
 function renderTodos() {
@@ -48,6 +49,7 @@ function renderTodos() {
 
 
     filteredData.forEach(function (todo) {
+    // todos.forEach(function (todo) {
        
         let ps = document.createElement('p');
         ps.textContent = todo.text;
@@ -65,6 +67,15 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 
 renderTodos();
 
-document.querySelector('#submit').addEventListener('submit', function(e){
+document.querySelector('#new-todo').addEventListener('submit', function(e){
     e.preventDefault();
+   
+    todos.push({
+        text: e.target.elements.text.value,
+        completed: false
+    });
+    filteredData = filteredTodos(todos, filters);
+    renderTodos();
+    e.target.elements.text.value = '';
+    
 });

@@ -8,10 +8,14 @@
 </head>
 <body>
     <h1 >Todos</h1>       
-    <input type="text" id='search-text' placeholder='Enter something to'> 
-    <button id='submit'>Submit</button>
+    <input type="text" id='search-text' placeholder='Filter todos'>     
     <div id='title'></div>
     <div id='todos'>  </div>
+
+    <form id="new-todo">
+        <input type="text" name='text' placeholder='Something to do' id='add-todo'>
+        <button id='submit'>Submit</button>
+    </form>
     <script src="todo-app.js"></script>
 </body>
 </html>
