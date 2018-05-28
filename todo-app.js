@@ -8,10 +8,9 @@ const todos = [
 
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideCompleted: false
 };
-
-// let notDoneYet = 0;
 
 function notYetDone(items) {
     let count = 0;
@@ -30,13 +29,6 @@ filteredTodos = function (todos, filters) {
         return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
     });
 }
-
-// completedTodos = function () {
-
-//     return todos.filter(function (todo) {
-//         return todo.completed;
-//     });
-// }
 
 let filteredData = filteredTodos(todos, filters);
 
