@@ -1,10 +1,26 @@
-const todos = [
-    { text: 'Order cat food', completed: false },
-    { text: 'Clean kitchen', completed: true },
-    { text: 'Buy food', completed: true },
-    { text: 'Do work', completed: false },
-    { text: 'Exercise', completed: true }
-];
+/*
+1. Delete dummy data
+2. Read and parse data when the app starts up
+3. Stringify and write the data when new data is added
+*/
+// const todos = [
+//     { text: 'Order cat food', completed: false },
+//     { text: 'Clean kitchen', completed: true },
+//     { text: 'Buy food', completed: true },
+//     { text: 'Do work', completed: false },
+//     { text: 'Exercise', completed: true }
+// ];
+
+let  todos = [];
+
+// Check for existing data
+let todosJSON = localStorage.getItem('todos');
+
+if (todosJSON != null && todosJSON !== '') {
+    todos = JSON.parse(todosJSON);
+} else {
+    localStorage.setItem('todos','');
+}
 
 
 const filters = {
@@ -94,6 +110,9 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
             text: e.target.elements.text.value,
             completed: false
         });
+        
+        localStorage.setItem('todos', JSON.stringify(todos));
+
         filteredData = filteredTodos(todos, filters);
         if (hide.checked) {
             hideCompletedTodos();
